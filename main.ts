@@ -76,3 +76,13 @@ let p2: Person = { name: "Ruby", age: 30, move: () => {} };
 let halfAge = (person: Person): number => { return person.age / 2; } //warning that it might be undefined!
 console.log(halfAge(p));
 console.log(halfAge(p2));
+
+//interfaces can also describe a function type
+interface searchFunc {
+    (source: string, subString: string): boolean;
+}
+//only the parameters' types are important, names are not
+let mySearch: searchFunc;
+mySearch = function (src: string, sub: string) {
+    return src.search(sub) != -1;
+}
