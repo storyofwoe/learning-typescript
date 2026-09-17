@@ -50,4 +50,29 @@ function f6(i: string | number): void {
     console.log("The value was " + i)
 };
 f6(5);
-f6("5"); 
+f6("5");
+
+//interfaces
+interface Person {
+    name: string;
+    age?: number; //optional properties, if it does exist it better be this type!
+    move(): void;
+}
+
+function greet(person: Person) {
+    return `Hello ${person.name}`;
+}
+
+//this is identical to
+function greet2(person: { name: string; age: number }) {
+    return `Hello ${person.name}`;
+}
+
+let p: Person = { name: "Bobby", move: () => {} };
+console.log(greet(p));
+let p2: Person = { name: "Ruby", age: 30, move: () => {} };
+// let pInvalid: Person = { name: "Bobby", age: 42 }
+
+let halfAge = (person: Person): number => { return person.age / 2; } //warning that it might be undefined!
+console.log(halfAge(p));
+console.log(halfAge(p2));
