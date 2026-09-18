@@ -60,3 +60,18 @@ class Derived extends Base {
 }
 
 const d = new Derived(); //output: 4
+
+// methods
+class Point3 {
+    x = 10;
+    y = 10;
+
+    scale(n: number): void {
+        this.x *= n;
+        this.y *= n;
+    }
+}
+
+let pt3 = new Point3;
+pt3.scale(2);
+console.log(`(${pt3.x}, ${pt3.y})`);
