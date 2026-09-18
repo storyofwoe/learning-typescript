@@ -64,7 +64,7 @@ function greet(person: Person) {
 }
 
 //this is identical to
-function greet2(person: { name: string; age: number }) {
+function greet2(person: { name: string; move: () => {} }) {
     return `Hello ${person.name}`;
 }
 
