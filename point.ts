@@ -29,6 +29,7 @@ class Point {
 
 let p1 = new Point(10, 20);
 let p2 = new Point(25) // y will be 0
+console.log(`(${Point.origin.x}, ${Point.origin.y})`)
 console.log(p1.dist());
 console.log(p2.dist());
 
