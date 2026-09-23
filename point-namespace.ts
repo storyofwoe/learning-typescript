@@ -1,8 +1,8 @@
 namespace Geometry {
     export class Point {
-        x: number;
+        x: number = 0;
 
-        constructor(x: number, public y: number = 0) {
+        constructor(x: number = 0, public y: number = 0) {
             this.x = x;
         }
 
@@ -12,7 +12,7 @@ namespace Geometry {
     }
 
     export class Point3D extends Point {
-        constructor(x: number, y: number, public z: number = 0) {
+        constructor(x: number = 0, y: number = 0, public z: number = 0) {
             super(x, y);
         }
 
