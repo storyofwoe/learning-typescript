@@ -45,3 +45,23 @@ class Point3D extends Point {
         return Math.sqrt(d ** 2 + this.z ** 2)
     }
 }
+
+// Modules (previously called modules, now namespaces)
+// tbh, could honestly put the points in this namespace
+namespace Geometry {
+    export class Square {
+        constructor(public sideLength: number = 0) {
+        }
+        area() {
+            return Math.pow(this.sideLength, 2);
+        }
+    }
+}
+
+let s1 = new Geometry.Square(5);
+console.log(s1.area());
+
+// local alias for referencing a module
+import G = Geometry;
+
+let s2 = new G.Square(10);
