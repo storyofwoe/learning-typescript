@@ -27,6 +27,14 @@ class Point2 {
         this.y = 0;
     }
 }
+class Point4 { // might be better practice
+    x: number;
+    constructor(x: number, public y: number = 0) {
+        this.x = x;
+    }
+}
+const pt4 = new Point4(0);
+console.log(`(${pt4.x}, ${pt4.y})`);
 const pt2 = new Point2();
 console.log(`(${pt2.x}, ${pt2.y})`);
 
