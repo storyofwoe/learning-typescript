@@ -1,3 +1,9 @@
+interface Person {
+    name: string;
+    age?: number;
+    move(): void;
+}
+
 class Point {
     x: number;
 
@@ -11,6 +17,16 @@ class Point {
     //static members
     static origin = new Point(0, 0);
 }
+
+// class PointPerson implements Person {
+//     name: string;
+//     move() {};
+
+//     constructor() {
+//         this.name = "";
+//     }
+// }
+
 let p1 = new Point(10, 20);
 let p2 = new Point(25) // y will be 0
 console.log(p1.dist());
