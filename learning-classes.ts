@@ -47,7 +47,7 @@ console.log(g.name);
 const g2 = new Greeter("Hello");
 console.log(g2.name);
 
-//super calls
+//super calls, class derivation
 class Base {
     k: number = 4;
 }
@@ -75,3 +75,23 @@ class Point3 {
 let pt3 = new Point3;
 pt3.scale(2);
 console.log(`(${pt3.x}, ${pt3.y})`);
+
+//implements clauses
+interface Pingable {
+    ping(): void;
+}
+
+class Sonar implements Pingable {
+    ping() {
+        console.log("ping!");
+    }
+}
+
+const s = new Sonar();
+s.ping();
+
+// class Ball implements Pingable { //Error !
+//     pong() {
+//         console.log("pong!");
+//     }
+// }
