@@ -26,8 +26,17 @@ namespace Geometry {
         constructor(public sideLength: number = 0) {
         }
 
-        area() {
+        area(): number {
             return Math.pow(this.sideLength, 2);
         }
     }
 }
+
+let s1 = new Geometry.Square(5);
+let p1 = new Geometry.Point() //defaults to 0, 0
+import G = Geometry;
+let s2 = new G.Square(10);
+let p2 = new G.Point3D(5, 10, 15);
+
+console.log(`A square with side length ${s2.sideLength} has area ${s2.area()}`);
+console.log(`The Euclidean distance of the point (${p2.x}, ${p2.y}, ${p2.z}) is: ${p2.dist()}`);
