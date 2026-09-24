@@ -20,6 +20,8 @@ namespace Geometry {
             let d = super.dist();
             return Math.sqrt(d ** 2 + this.z ** 2);
         }
+
+        static origin = new Point3D(0, 0, 0)
     }
 
     export class Square {
@@ -39,4 +41,4 @@ let s2 = new G.Square(10);
 let p2 = new G.Point3D(5, 10, 15);
 
 console.log(`A square with side length ${s2.sideLength} has area ${s2.area()}`);
-console.log(`The Euclidean distance of the point (${p2.x}, ${p2.y}, ${p2.z}) is: ${p2.dist()}`);
+console.log(`The Euclidean distance of the point (${p2.x}, ${p2.y}, ${p2.z}) from the origin (${G.Point3D.origin.x}, ${G.Point3D.origin.y}, ${G.Point3D.origin.z}) is: ${p2.dist()}`);
