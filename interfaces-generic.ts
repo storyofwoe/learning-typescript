@@ -224,12 +224,28 @@ lRepo2.save({
 
 console.log(lRepo2.getAll());
 
+const userRepo3 = new RepositoryClass<User>();
+userRepo3.save({
+    id: 10,
+    firstName: "Penny",
+    lastName: "Parker",
+    age: 23,
+    accountStatus: "active",
+});
+
+console.log(userRepo3.getAll());
+
 //=====================
 //How do we get something like getById() that relies on id (which might not exist in a generic type)
 //Remember that <T> could literally be a string or number!
 
 interface HasId {
     id: number;
+}
+
+interface Desk {
+    material: string;
+    price: number;
 }
 
 class RepositoryClass2<T extends HasId> implements RepositoryInterface<T> {
@@ -252,3 +268,5 @@ const userRepo2 = new RepositoryClass2<User>();
 userRepo2.save(user1);
 console.log(userRepo2.getAll());
 console.log(userRepo2.getById(1));
+
+//const deskRepo = new RepositoryClass2<Desk>(); //Error !
