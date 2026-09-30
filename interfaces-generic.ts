@@ -270,3 +270,29 @@ console.log(userRepo2.getAll());
 console.log(userRepo2.getById(1));
 
 //const deskRepo = new RepositoryClass2<Desk>(); //Error !
+
+//==========================================================
+
+class Tuple<T1, T2> {
+    constructor(public item1: T1, public item2: T2) {
+    }
+}
+
+interface Pair<T> {
+    item1: T;
+    item2: T;
+}
+
+const x: Pair<number> = { item1: 2, item2: 3 };
+console.log(x.item1);
+
+function pairToTuple<T>(p: Pair<T>): Tuple<T, T> {
+    return new Tuple(p.item1, p.item2);
+}
+
+const y = new Tuple(2, "test")
+console.log(y);
+console.log(y.item2);
+console.log(pairToTuple(x));
+
+let tuple = pairToTuple({ item1: "Hello", item2: "world!" });

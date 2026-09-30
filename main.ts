@@ -86,3 +86,74 @@ let mySearch: searchFunc;
 mySearch = function (src: string, sub: string) {
     return src.search(sub) != -1;
 }
+
+//===================
+//READ ONLY
+
+interface Person2 {
+    readonly name: string;
+    readonly age: number;
+}
+
+let p1: Person2 = { name: "Penny", age: 18 };
+p1.age = 23; //Error !
+
+let pe2 = { name: "John", age: 60 };
+let pe3: Person2 = pe2;
+
+pe3.age = 35; // Error, read only
+pe2.age = 25; // Okay, but updates pe3 because of aliasing
+console.log(pe3.age);// Output: 25
+
+// ======================
+// Tagged Union Types
+type State =
+    | { type: "loading" } // Note: this is the same as doing something like number | string
+    | { type: "success", value: number }
+    | { type: "error", message: string }
+
+declare const state: State; //use of declare here is to avoid errors because state has not been given any values
+// if ( state.type === "success" ) {
+//     console.log(state.value);
+// } else if ( state.type === "error" ) {
+//     console.error(state.message);
+// }
+
+// ========================
+// Template Literal Types
+type OrderSize = "regular" | "large";
+type OrderItem = "espresso" | "hot chocolate"
+type Order = `A ${OrderSize} ${OrderItem}`;
+
+let order1: Order = "A regular espresso";
+let order2: Order = "A large hot chocolate";
+let order3: Order = "A small espresso"; // Error!
+
+// Iterators
+// for...of statement
+const arrayOfAnyType: Array<any> = [1, "string", true];
+for ( const val of arrayOfAnyType ) {
+    console.log(val);
+};
+
+//for...in statement
+for ( const i in arrayOfAnyType ) {
+    console.log(i);
+};
+
+// Type assertion
+const bar = {};
+// bar.foo = 123; //Error ! property foo does not exist. can get around this with interfaces
+
+interface Foo {
+    bar: number;
+    baz: string;
+}
+
+const foo = {} as Foo;
+console.log(foo);
+
+foo.bar = 123;
+foo.baz = "Hello, world!";
+
+console.log(foo);
