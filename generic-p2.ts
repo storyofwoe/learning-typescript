@@ -124,3 +124,31 @@ type Scores = [string, ...number[]];
 type NameAndThings<T extends unknown[]> = [name: string, ...things: T]; // Why is extends necessary?
 let bobScores: NameAndThings<number[]>;
 bobScores = ["Bob", 4, 5, 1];
+
+let billScores: NameAndThings<("A" | "B" | "C")[]>;
+billScores = ["Bill", "A", "B", "C"];
+
+// USING GENERIC REST ELEMENT TYPES IN FUNCTIONS
+function logThings<T extends unknown[]>(name: string, ...things: T) {
+    console.log(things)
+};
+
+logThings("Bob", 2, 3, 4);
+
+// =============================
+// SPREADING GENERIC TUPLE PARAMETERS
+
+function merge(names: string[], scores: number[]) {
+    return [...names, ...scores]
+};
+
+let scores = merge(["Bill", "Jane"], [8, 9]);
+// scores inferred type is "(string | number)[]" - more strongly-typed return type would be [string, string, number, number] or even
+// ["Bill", "Jane", 8, 9]
+
+function merge2<Names extends string[], Scores extends number[]>(names: [...Names], scores: [...Scores]): [...Names, ...Scores] {
+    return [...names, ...scores]
+}
+
+let scores2 = merge2(["Bill", "Jane"], [8, 9])
+// scores2 return type is now ["Bill", "Jane", 8, 9]
