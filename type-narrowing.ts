@@ -154,3 +154,38 @@ function sayHello4(contact: Contact2) {
     console.log(`Hello ${contact.firstName}`);
 }
 
+// Discriminated union pattern
+interface Person3 extends Person2 {
+    contactType: "person";
+}
+
+interface Organisation3 extends Organisation2 {
+    contactType: "organisation";
+}
+
+type Contact3 = Person3 | Organisation3;
+
+function sayHello5(contact: Contact3) {
+    // TODO - Output "Hello {firstName}" if a person
+    // TODO - Output "Hello {name}" if an organisation
+    switch (contact.contactType) {
+        case "person":
+            console.log(`Hello ${contact.firstName}`);
+            break;
+
+        case "organisation":
+            console.log(`Hello ${contact.name}`);
+            break;
+    }
+}
+
+const yang: Person3 = {
+    firstName: "Yang",
+    surname: "Xiao Long",
+    contactType: "person"
+}
+
+const sanrio: Organisation3 = {
+    name: "Sanrio",
+    contactType: "organisation"
+}
