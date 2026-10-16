@@ -49,3 +49,33 @@ console.log(double(1))
 // Using an instanceof type guard
 // Used to check whether an object belongs to a particular class. Also takes inheritance into account
 
+class Contact {
+    constructor(public emailAddress: string) {}
+}
+class Person extends Contact {
+    constructor(public firstName: string, public surname: string, emailAddress: string) {
+        super(emailAddress);
+    };
+};
+class Organisation extends Contact {
+    constructor(public name: string, emailAddress: string) {
+        super(emailAddress);
+    };
+};
+
+function sayHello(contact: Contact) {
+    // TODO - output Hello {firstName} if a person
+    // TODO - output Hello {name} if an organisation
+
+    if (contact instanceof Person) {
+        console.log(`Hello ${contact.firstName}`);
+    } else if (contact instanceof Organisation) {
+        console.log(`Hello ${contact.name}`);
+    }
+}
+
+const bob = new Person("Bob", "Young", "bob.young@example.com");
+const redBricks = new Organisation("Red Bricks", "info@redbricks.com");
+
+sayHello(bob);
+sayHello(redBricks);
