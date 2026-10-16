@@ -57,3 +57,9 @@ const bob: RequiredProperties<Contact> = {
 
 console.log(bob);
 
+// Using `typeof` to infer a type
+const initialContactDetails = { name: "", email: "", mobile: "" };
+
+function saveContactDetails(details: typeof initialContactDetails) {
+    console.log(details);
+}
