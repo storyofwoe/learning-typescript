@@ -37,3 +37,23 @@ const contactForm: Form<{ name: string; email: string; mobile: string; }> = {
     },
 };
 console.log(contactForm);
+
+// Using mapped type modifiers
+type Contact = {
+    name: string;
+    email?: string;
+    age?: number;
+};
+
+type RequiredProperties<T> = {
+    [K in keyof T]-?: T[K]; // T[K] was previously "string", but that mapped age (number) to string
+};
+
+const bob: RequiredProperties<Contact> = {
+    name: "Bob",
+    email: "bob@example.com",
+    age: 30,
+};
+
+console.log(bob);
+
