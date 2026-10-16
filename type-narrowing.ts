@@ -116,3 +116,25 @@ const valve: Organisation2 = {
 
 sayHello2(ruby)
 sayHello2(valve)
+
+// Using a user-defined type guard with a type predicate
+// A type predicate can be used in a function's return type to indicate the narrowed type of the parameter
+
+function isPerson(contact: Contact2): contact is Person2 {
+    return (contact as Person2).firstName !== undefined;
+}
+
+function isOrganisation(contact: Contact2): contact is Organisation2 {
+    return (contact as Organisation2).name !== undefined;
+}
+
+function sayHello3(contact: Contact2) {
+    if (isPerson(contact)) {
+        console.log(`Hello ${contact.firstName}`);
+    } else if (isOrganisation(contact)) {
+        console.log(`Hello ${contact.name}`);
+    }
+}
+
+sayHello3(ruby)
+sayHello3(valve)
