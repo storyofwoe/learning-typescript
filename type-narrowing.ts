@@ -138,3 +138,19 @@ function sayHello3(contact: Contact2) {
 
 sayHello3(ruby)
 sayHello3(valve)
+
+// User-defined type guard with an assertion signature
+
+function assertIsPerson(contact: Contact2): asserts contact is Person2 {
+    if ((contact as Person2).firstName === undefined) {
+        throw new Error("Not a person");
+    }
+}
+
+function sayHello4(contact: Contact2) {
+    // TODO - output Hello {firstName} if a person
+    // TODO - output Hello {name} if an organisation
+    assertIsPerson(contact);
+    console.log(`Hello ${contact.firstName}`);
+}
+
