@@ -79,3 +79,40 @@ const redBricks = new Organisation("Red Bricks", "info@redbricks.com");
 
 sayHello(bob);
 sayHello(redBricks);
+
+// Using an `in` type guard
+// `in` can be used to check whether a property belongs to a particular object
+// Similar structure to above, but instead of classes we're using interfaces
+
+interface Person2 {
+    firstName: string;
+    surname: string
+}
+
+interface Organisation2 {
+    name: string;
+}
+
+type Contact2 = Person2 | Organisation2
+
+function sayHello2(contact: Contact2) {
+    // TODO - output Hello {firstName} if a person
+    // TODO - output Hello {name} if an organisation
+    if ("firstName" in contact) {
+        console.log(`Hello ${contact.firstName}`);
+    } else {
+        console.log(`Hello ${contact.name}`);
+    }
+}
+
+const ruby: Person2 = {
+    firstName: "Ruby",
+    surname: "Rose"
+}
+
+const valve: Organisation2 = {
+    name: "Valve"
+}
+
+sayHello2(ruby)
+sayHello2(valve)
